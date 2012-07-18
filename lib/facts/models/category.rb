@@ -7,7 +7,7 @@ module Facts
         self.name  = attrs["name"] || attrs[:name]
         self.slug  = attrs["slug"] || attrs[:slug]
         self.facts = (attrs["facts"] || attrs[:facts] || []).
-          map { |f| Fact.new(f) }
+          map { |a| f = Fact.new(a) ; f.category = self ; f }
       end
     end
   end

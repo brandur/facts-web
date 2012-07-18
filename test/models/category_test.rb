@@ -8,6 +8,7 @@ module Facts
           facts: [ { content: "The world is **big**." } ])
         category.name.must_equal "World"
         category.slug.must_equal "world"
+        category.facts.first.category.must_equal category
         category.facts.first.content.must_equal "The world is **big**."
       end
     end
