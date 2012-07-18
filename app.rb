@@ -8,17 +8,17 @@ helpers do
 end
 
 get "/" do
-  redirect "/facts/latest"
+  redirect "/latest"
 end
 
-get "/facts/latest" do
+get "/latest" do
   response = api.get(path: "/facts/latest", expects: 200)
   @facts = JSON.parse(response.body).map { |f| Facts::Models::Fact.new(f) }
   @title = "Latest Facts"
   slim :show_latest
 end
 
-get "/facts/random" do
+get "/random" do
   response = api.get(path: "/facts/random", expects: 200)
   @facts = JSON.parse(response.body).map { |f| Facts::Models::Fact.new(f) }
   @title = "Random Facts"
