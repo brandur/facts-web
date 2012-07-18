@@ -1,0 +1,5 @@
+h1 Latest Facts
+ul
+  - @facts.each do |fact|
+    li
+      == fact.content_html_with_link_and_category_link

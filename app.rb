@@ -7,9 +7,24 @@ helpers do
   end
 end
 
+get "/facts/latest" do
+  response = api.get(path: "/facts/latest", expects: 200)
+  @facts = JSON.parse(response.body).map { |f| Facts::Models::Fact.new(f) }
+  @title = "Latest Facts"
+  slim :show_latest
+end
+
+get "/facts/random" do
+  response = api.get(path: "/facts/random", expects: 200)
+  @facts = JSON.parse(response.body).map { |f| Facts::Models::Fact.new(f) }
+  @title = "Random Facts"
+  slim :show_random
+end
+
 get "/:slug" do |slug|
   response = api.get(path: "/categories/#{slug}", expects: 200)
   @category = Facts::Models::Category.new(JSON.parse(response.body))
+  @title = @category.name
   slim :show_category
 end
 

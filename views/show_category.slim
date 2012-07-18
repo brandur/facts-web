@@ -2,4 +2,4 @@ h1= @category.name
 ul
   - @category.facts.each do |fact|
     li
-      == fact.content_html.gsub(/<\/p>\Z/, %{ <a href="/#{@category.slug}/#{fact.id}">#{fact.id}</a></p>})
+      == fact.content_html_with_link
