@@ -1,8 +1,8 @@
 module Facts
-  class Instrumentor
+  class ExconInstrumentor
     attr_accessor :events
 
-    def initialize(id)
+    def initialize(id = nil)
       @id = id
     end
 

@@ -1,4 +1,4 @@
 require "facts/config"
-require "facts/instrumentor"
+require "facts/excon_instrumentor"
 require "facts/models/category"
 require "facts/models/fact"

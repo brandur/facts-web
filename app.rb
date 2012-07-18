@@ -3,7 +3,7 @@ require "json"
 helpers do
   def api
     @api ||= Excon.new(Facts::Config.api,
-      instrumentor: Facts::Instrumentor.new(request.env["REQUEST_ID"]))
+      instrumentor: Facts::ExconInstrumentor.new(request.env["REQUEST_ID"]))
   end
 end
 
