@@ -1,4 +1,6 @@
 require "facts/config"
 require "facts/excon_instrumentor"
+require "facts/filters/markdown_filter"
+require "facts/filters/tex_filter"
 require "facts/models/category"
 require "facts/models/fact"

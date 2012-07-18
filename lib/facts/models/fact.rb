@@ -1,6 +1,11 @@
 module Facts
   module Models
     class Fact
+      FILTERS = [
+        Filters::MarkdownFilter.new,
+        Filters::TexFilter.new,
+      ].freeze
+
       attr_accessor :category, :content, :id
 
       def initialize(attrs = {})
@@ -10,9 +15,10 @@ module Facts
       end
 
       def content_html
-        renderer = Redcarpet::Markdown.new(Redcarpet::Render::HTML, 
-          :fenced_code_blocks => true, :hard_wrap => true)
-        renderer.render(content)
+        content = self.content
+        FILTERS.each { |filter| content = filter.extract(content) }
+        FILTERS.each { |filter| content = filter.process(content) }
+        content
       end
 
       def content_html_with_link

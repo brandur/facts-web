@@ -12,6 +12,13 @@ html lang='en'
     link href="/assets/app.css" media="screen" rel="stylesheet" type="text/css"
     script src="/assets/app.js" type="text/javascript"
 
+    / Disable MathJax popups
+    script type='text/x-mathjax-config'
+      | MathJax.Hub.Config({
+      |   messageStyle: "none"
+      | });
+    script src="http://cdn.mathjax.org/mathjax/1.1-latest/MathJax.js?config=default" type="text/javascript"
+
     / Enable HTML5 styling for the bane of the Internet
     /[ if lt IE 9 ]
       script src="http://html5shim.googlecode.com/svn/trunk/html5.js"

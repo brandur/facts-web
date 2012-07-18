@@ -16,6 +16,11 @@ module Facts
         fact = Fact.new(content: "The world is **big**.")
         fact.content_html.must_match %r{The world is <strong>big</strong>.}
       end
+
+      it "renders inline math in content" do
+        fact = Fact.new(content: 'a \( a^2 \) b')
+        fact.content_html.must_match 'a <script type="math/tex">a^2</script> b'
+      end
     end
   end
 end
