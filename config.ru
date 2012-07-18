@@ -26,5 +26,6 @@ end
 
 map "/" do
   use Rack::Instruments
+  use Rack::Robots
   run Sinatra::Application
 end
