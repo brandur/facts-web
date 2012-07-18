@@ -7,6 +7,10 @@ helpers do
   end
 end
 
+get "/" do
+  redirect "/facts/latest"
+end
+
 get "/facts/latest" do
   response = api.get(path: "/facts/latest", expects: 200)
   @facts = JSON.parse(response.body).map { |f| Facts::Models::Fact.new(f) }
