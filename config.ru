@@ -27,5 +27,6 @@ end
 map "/" do
   use Rack::Instruments
   use Rack::Robots
+  use Rack::SSL if Facts::Config.force_ssl?
   run Sinatra::Application
 end

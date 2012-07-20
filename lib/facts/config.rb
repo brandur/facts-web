@@ -6,6 +6,10 @@ module Facts
       @api ||= env!("HTTP_API")
     end
 
+    def force_ssl?
+      @force_ssl ||= %w{1 true}.include?(env("FORCE_SSL"))
+    end
+
     private
 
     def env(k)
