@@ -44,5 +44,6 @@ end
 get "/:slug/:fact_id" do |slug, fact_id|
   response = api_call { api.get(path: "/facts/#{fact_id}", expects: 200) }
   @fact = Facts::Models::Fact.new(JSON.parse(response.body))
+  raise Sinatra::NotFound if @fact.category.slug != slug
   slim :show_fact
 end
