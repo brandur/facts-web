@@ -13,6 +13,9 @@ require "facts"
 # Sinatra app
 require "./app"
 
+# Sinatra configuration
+set :show_exceptions, false
+
 Slim::Engine.set_default_options format: :html5, pretty: true
 
 map "/assets" do
