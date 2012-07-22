@@ -7,7 +7,7 @@ module Facts
     end
 
     def force_ssl?
-      @force_ssl ||= %w{1 true}.include?(env("FORCE_SSL"))
+      @force_ssl ||= %w{1 true yes}.include?(env("FORCE_SSL"))
     end
 
     private
