@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require "json"
 
 helpers do
@@ -59,7 +61,7 @@ get "/search" do
     response = api_call { api.get(path: "/facts/search", expects: 200,
       query: { q: @q }) }
   end
-  @title = "Search: #{@q}"
+  @title = @q != "" ? '“%s”' % @q : "Search"
   slim :show_search
 end
 
