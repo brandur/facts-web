@@ -1,5 +1,19 @@
-h1 Search: #{@q}
-ul
-  - @facts.each do |fact|
-    li
-      == fact.content_html_with_link_and_category_link
+.row
+  .col_12.last
+    #show_search
+      - if @categories.count > 0
+        h2 Categories
+        ul
+          - @categories.each do |category|
+            li
+              a href="/#{category.slug}"= category.name
+      / Only show facts header if there were categories too
+      - if @categories.count > 0
+        h2 Facts
+      ul
+        - if @facts.count > 0
+          - @facts.each do |fact|
+            li
+              == fact.content_html_with_link_and_category_link
+        - else
+          | Nothing to show here.

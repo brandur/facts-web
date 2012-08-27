@@ -1,3 +1,36 @@
+/*
+ * facts-web
+ * =========
+ */
+
+/*
+ * Mixins
+ */
+
+@mixin columns($count, $width, $gap)
+  column-count: $count
+  column-width: $width
+  column-gap: $gap
+  -moz-column-count: $count
+  -moz-column-width: $width
+  -moz-column-gap: $gap
+  -webkit-column-count: $count
+  -webkit-column-width: $width
+  -webkit-column-gap: $gap
+
+/*
+ * Styles
+ */
+
+a
+  color: #4183c4
+
+  &:hover
+    text-decoration: none
+
+  &:visited
+    color: #71b3f4
+
 body
   background: #fff
   color: #000
@@ -10,12 +43,25 @@ body
 em
   font-style: italic
 
+form
+  display: inline
+
 h1
   font-family: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif
   font-size: 80px
   font-weight: 100
   line-height: 1em
-  margin: 40px 0
+  margin: 20px 0
+
+h2
+  font-family: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font-size: 30px
+  font-weight: 100
+  line-height: 1em
+  margin: 30px 0
+
+p
+  margin: 10px 0
 
 ul
   list-style-type: disc
@@ -28,5 +74,50 @@ ul
 strong
   font-weight: bold
 
+.clear
+  clear: both
+
 .row
-  max-width: 700px
+  max-width: 1000px
+
+header
+  margin: 0 0 50px 0
+
+  #search
+
+    input
+      font-size: 16px
+
+#content
+  margin: 0 0 50px 0
+
+  #show_fact
+
+    .fact
+      font-size: 26px
+      line-height: 1.4em
+
+  #show_latest, #show_random, #show_search
+    @include columns(auto, 300px, 20px)
+
+footer
+
+  .nav
+
+    ul
+      list-style-type: none
+      padding: 0
+
+      li
+        float: left
+        margin: 0 5px 0 0
+
+        a
+          color: #000
+
+  p#about
+    color: #aaa
+    font-size: 14px
+
+    a
+      color: #aaa

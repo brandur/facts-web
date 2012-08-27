@@ -1,5 +1,7 @@
-h1= @category.name
-ul
-  - @category.facts.each do |fact|
-    li
-      == fact.content_html_with_link
+.row
+  .col_12.last
+    #show_category
+      ul
+        - @category.facts.each do |fact|
+          li
+            == fact.content_html_with_link

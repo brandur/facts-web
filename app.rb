@@ -15,34 +15,50 @@ helpers do
     raise Sinatra::NotFound
   end
 
-  def parse_facts(body)
-    JSON.parse(body).map { |f| Facts::Models::Fact.new(f) }
+  def parse_categories
+    response = yield
+    JSON.parse(response.body).map { |f| Facts::Models::Category.new(f) }
+  end
+
+  def parse_facts
+    response = yield
+    JSON.parse(response.body).map { |f| Facts::Models::Fact.new(f) }
   end
 end
 
 get "/" do
-  redirect "/latest"
+  @latest_facts =
+    parse_facts { api_call { api.get(path: "/facts/latest", expects: 200) } }
+  @random_facts =
+    parse_facts { api_call { api.get(path: "/facts/random", expects: 200) } }
+  @title = "Facts"
+  slim :home
 end
 
 get "/latest" do
-  response = api_call { api.get(path: "/facts/latest", expects: 200) }
-  @facts = parse_facts(response.body)
+  @facts =
+    parse_facts { api_call { api.get(path: "/facts/latest", expects: 200) } }
   @title = "Latest Facts"
   slim :show_latest
 end
 
 get "/random" do
-  response = api_call { api.get(path: "/facts/random", expects: 200) }
-  @facts = parse_facts(response.body)
+  @facts =
+    parse_facts { api_call { api.get(path: "/facts/random", expects: 200) } }
   @title = "Random Facts"
   slim :show_random
 end
 
 get "/search" do
   @q = params[:q]
-  response = api_call { api.get(path: "/facts/search", expects: 200,
-    query: { q: @q }) }
-  @facts = parse_facts(response.body)
+  @categories = parse_categories do
+    api_call { api.get(path: "/categories/search", expects: 200,
+      query: { q: @q }) }
+  end
+  @facts = parse_facts do
+    response = api_call { api.get(path: "/facts/search", expects: 200,
+      query: { q: @q }) }
+  end
   @title = "Search: #{@q}"
   slim :show_search
 end
@@ -58,5 +74,6 @@ get "/:slug/:fact_id" do |slug, fact_id|
   response = api_call { api.get(path: "/facts/#{fact_id}", expects: 200) }
   @fact = Facts::Models::Fact.new(JSON.parse(response.body))
   raise Sinatra::NotFound if @fact.category.slug != slug
+  @title = "##{@fact.id}"
   slim :show_fact
 end

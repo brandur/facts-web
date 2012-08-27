@@ -1,0 +1,13 @@
+.row
+  .col_6
+    h2 Latest
+    ul.facts
+      - @latest_facts.each do |fact|
+        li
+          == fact.content_html_with_link_and_category_link
+  .col_6.last
+    h2 Random
+    ul
+      - @random_facts.each do |fact|
+        li
+          == fact.content_html_with_link_and_category_link
