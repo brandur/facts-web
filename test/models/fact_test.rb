@@ -12,6 +12,12 @@ module Facts
         fact.category.slug.must_equal "world"
       end
 
+      it "renders an internal link" do
+        fact = Fact.new(content: "The world is called [the Earth](earth).")
+        fact.content_html.must_match \
+          %r{The world is called <a href="/earth">the Earth</a>.}
+      end
+
       it "renders content as markdown" do
         fact = Fact.new(content: "The world is **big**.")
         fact.content_html.must_match %r{The world is <strong>big</strong>.}

@@ -2,6 +2,7 @@ module Facts
   module Models
     class Fact
       FILTERS = [
+        Filters::LinkFilter.new,
         Filters::MarkdownFilter.new,
         Filters::TexFilter.new,
       ].freeze
