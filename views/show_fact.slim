@@ -1,6 +1,9 @@
-.row
-  .col_12.last
-    #show_fact
-      .fact
-        == @fact.content_html
-      p Categorized under <a href="/#{@fact.category.slug}">#{@fact.category.name}</a>.
+== slim :_header
+#content
+  .row
+    .col_12.last
+      #show_fact
+        .fact
+          == @fact.content_html
+        p Categorized under <a href="/#{@fact.category.slug}">#{@fact.category.name}</a>.
+== slim :_footer

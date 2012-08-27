@@ -24,25 +24,5 @@ html lang='en'
       script src="http://html5shim.googlecode.com/svn/trunk/html5.js"
 
   body
-    header
-      .row
-        .col_12.last
-          h1.title= @title
-          #search
-            form method="get" action="/search"
-              input type="text" name="q"
-    #content
+    #container
       == yield
-    footer
-      .row
-        .col_12.last
-          .nav
-            ul
-              li
-                a href="/" Home
-              li
-                a href="/latest" Latest
-              li
-                a href="/random" Random
-            .clear
-          p#about Created by <a href="http://brandur.org">Brandur</a>.

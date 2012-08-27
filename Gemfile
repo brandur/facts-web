@@ -1,5 +1,6 @@
 source :rubygems
 
+gem "coffee-script"
 gem "excon"
 gem "rack"
 gem "rack-instruments"

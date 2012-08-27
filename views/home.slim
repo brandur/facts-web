@@ -1,15 +1,18 @@
-.row
-  .col_6
-    h2
-      a href="/latest" Latest
-    ul.facts
-      - @latest_facts.each do |fact|
-        li
-          == fact.content_html_with_link_and_category_link
-  .col_6.last
-    h2
-      a href="/random" Random
-    ul
-      - @random_facts.each do |fact|
-        li
-          == fact.content_html_with_link_and_category_link
+== slim :_header
+#content
+  .row
+    .col_6
+      h2
+        a href="/latest" data-pjax="#container" Latest
+      ul.facts
+        - @latest_facts.each do |fact|
+          li
+            == fact.content_html_with_link_and_category_link
+    .col_6.last
+      h2
+        a href="/random" data-pjax="#container" Random
+      ul
+        - @random_facts.each do |fact|
+          li
+            == fact.content_html_with_link_and_category_link
+== slim :_footer

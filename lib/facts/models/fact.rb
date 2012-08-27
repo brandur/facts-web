@@ -24,12 +24,12 @@ module Facts
 
       def content_html_with_link
         content_html.gsub(/<\/p>\Z/,
-          %{ <a href="/#{category.slug}/#{id}">#{id}</a></p>})
+          %{ <a href="/#{category.slug}/#{id}" data-pjax="#container">#{id}</a></p>})
       end
 
       def content_html_with_link_and_category_link
         content_html_with_link.gsub(/\A<p>/,
-          %{<p><a href="/#{category.slug}">#{category.name}:</a> })
+          %{<p><a href="/#{category.slug}" data-pjax="#container">#{category.name}:</a> })
       end
     end
   end

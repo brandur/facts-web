@@ -1,7 +1,10 @@
-.row
-  .col_12.last
-    #show_category
-      ul
-        - @category.facts.each do |fact|
-          li
-            == fact.content_html_with_link
+== slim :_header
+#content
+  .row
+    .col_12.last
+      #show_category
+        ul
+          - @category.facts.each do |fact|
+            li
+              == fact.content_html_with_link
+== slim :_footer
