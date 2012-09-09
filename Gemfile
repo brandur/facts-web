@@ -2,6 +2,7 @@ source :rubygems
 
 gem "coffee-script"
 gem "excon"
+gem "excon-slides_instrumentor"
 gem "rack"
 gem "rack-instruments"
 gem "rack-robots"

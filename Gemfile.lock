@@ -8,6 +8,8 @@ GEM
     daemons (1.1.8)
     eventmachine (0.12.10)
     excon (0.15.1)
+    excon-slides_instrumentor (0.1.0)
+      slides (~> 0.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
     hike (1.2.1)
@@ -47,6 +49,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-script
   excon
+  excon-slides_instrumentor
   rack
   rack-instruments
   rack-robots
