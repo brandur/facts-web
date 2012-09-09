@@ -17,6 +17,10 @@ helpers do
     raise Sinatra::NotFound
   end
 
+  def log(action, attrs = {})
+    Slides.log(action, attrs.merge!(id: request.env["REQUEST_ID"]))
+  end
+
   def parse_categories
     response = yield
     JSON.parse(response.body).map { |f| Facts::Models::Category.new(f) }
@@ -33,7 +37,7 @@ helpers do
 end
 
 before do
-  Slides.log :request_info, pjax: pjax?, id: request.env["REQUEST_ID"]
+  log :request_info, pjax: pjax?
 end
 
 get "/" do
