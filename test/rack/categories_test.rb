@@ -22,6 +22,6 @@ describe "rack categories" do
   it "gets a category" do
     get "/heroku"
     last_response.status.must_equal 200
-    p last_response
+    last_response.body.must_match %r{<title>Heroku</title>}
   end
 end
