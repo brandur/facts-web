@@ -7,7 +7,7 @@ module Facts
       end
 
       def extract(data)
-        data.gsub(/\[(.+)\]\(([a-z-]+)\)/) do
+        data.gsub(/\[(.+?)\]\(([a-z-]+?)\)/) do
           text, category = $1, $2
           id = Digest::SHA1.hexdigest("#{text}|#{category}")
           @link_map[id] = [text, category]
