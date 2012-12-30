@@ -6,11 +6,7 @@ require "logger"
 # so logging output appears properly
 $stdout.sync = true
 
-# libs
-$: << "./lib"
-require "facts"
-
-# Sinatra app
+require "./lib/facts"
 require "./app"
 
 # Sinatra configuration
