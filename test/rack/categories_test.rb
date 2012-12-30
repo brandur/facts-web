@@ -10,13 +10,9 @@ describe "rack categories" do
   end
 
   before do
-    stub(Facts::Config).api { "https://facts-api.localhost" }
     set :views, settings.root + "/../views"
-    Artifice::Excon.activate_for(Facts::Config.api, FactsApiStub.new)
-  end
-
-  after do
-    Artifice::Excon.deactivate
+    stub(Facts::Config).api { "https://facts-api.localhost" }
+    stub_facts_service
   end
 
   it "gets a category" do

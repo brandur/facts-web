@@ -16,9 +16,9 @@ gem "sprockets"
 gem "thin"
 
 group :development, :test do
-  gem "artifice-excon"
   gem "debugger"
   gem "facts_api_stub", git: "https://github.com/brandur/facts_api_stub.git"
   gem "rack-test"
   gem "rr"
+  gem "webmock"
 end
