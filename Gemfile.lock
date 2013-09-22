@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/brandur/facts_api_stub.git
-  revision: 1fe5f62685e10184a8579b42473407328caa40f0
+  revision: 4a09bbf02238191b547cb526439cfe7637dbe66a
   specs:
     facts_api_stub (0.1.0)
 
@@ -14,14 +14,12 @@ GEM
     coffee-script-source (1.3.3)
     columnize (0.3.6)
     crack (0.3.1)
-    daemons (1.1.8)
     debugger (1.6.1)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
       debugger-ruby_core_source (~> 1.2.3)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.3)
-    eventmachine (0.12.10)
     excon (0.16.2)
     excon-slides_instrumentor (0.1.0)
       slides (~> 0.1)
@@ -29,6 +27,8 @@ GEM
       multi_json (~> 1.0)
     hike (1.2.1)
     multi_json (1.3.6)
+    puma (2.3.2)
+      rack (>= 1.1, < 2.0)
     rack (1.4.1)
     rack-instruments (0.1.7)
       slides (~> 0.1)
@@ -55,10 +55,6 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     temple (0.4.0)
-    thin (1.3.1)
-      daemons (>= 1.0.9)
-      eventmachine (>= 0.12.6)
-      rack (>= 1.0.0)
     tilt (1.3.3)
     webmock (1.9.0)
       addressable (>= 2.2.7)
@@ -73,6 +69,7 @@ DEPENDENCIES
   excon
   excon-slides_instrumentor
   facts_api_stub!
+  puma
   rack
   rack-instruments
   rack-robots
@@ -85,5 +82,4 @@ DEPENDENCIES
   slides
   slim
   sprockets
-  thin
   webmock
