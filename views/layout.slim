@@ -17,8 +17,10 @@ html lang='en'
       | MathJax.Hub.Config({
       |   messageStyle: "none"
       | });
-    script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"
-    /script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=default"
+    - if request.env["HTTP_X_FORWARDED_PROTO"] == "https"
+      script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=default"
+    - else
+      script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"
 
     / Enable HTML5 styling for the bane of the Internet
     /[ if lt IE 9 ]
